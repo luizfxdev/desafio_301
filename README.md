@@ -49,7 +49,7 @@ npm run dev
 ## 📁 Estrutura do Projeto
 
 ```
-prova-das-chamas-da-verdade/
+desafio_301/
 ├── index.html          # Página principal
 ├── styles.scss         # Estilos em SCSS
 ├── styles.css          # Estilos compilados (gerado automaticamente)
