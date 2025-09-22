@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prova das Chamas da Verdade - Kyojuro Rengoku</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Background de imagem (substitua por vídeo se necessário) -->
+    <video id="background-video" autoplay muted loop>
+      <source src="assets/background.mp4" type="video/mp4" />
+      Seu navegador não suporta vídeos HTML5.
+    </video>
+
+    <!-- Container principal do desafio -->
+    <div class="challenge-container">
+      <header class="challenge-header">
+        <h1>🔥 Prova das Chamas da Verdade</h1>
+        <p>Ajude Rengoku a restaurar as cores perdidas nas trevas</p>
+      </header>
+
+      <!-- Seção de entrada -->
+      <div class="input-section">
+        <div class="input-group">
+          <label for="original-colors">Cores Originais:</label>
+          <input type="text" id="original-colors" placeholder="vermelho, azul, verde, amarelo" />
+        </div>
+        <div class="input-group">
+          <label for="lost-colors">Cores Perdidas:</label>
+          <input type="text" id="lost-colors" placeholder="verde, amarelo" />
+        </div>
+      </div>
+      <br />
+      <br />
+      <br />
+      <!-- Seção de botões -->
+      <div class="buttons-section">
+        <!-- SVG para efeito gooey -->
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+          <defs>
+            <filter id="gooey">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+              <feColorMatrix
+                in="blur"
+                type="matrix"
+                values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 19 -9"
+                result="highContrastGraphic"
+              />
+              <feComposite in="SourceGraphic" in2="highContrastGraphic" operator="atop" />
+            </filter>
+          </defs>
+        </svg>
+
+        <button id="start-button" class="gooey-button">
+          🔥 INICIAR
+          <span class="bubbles">
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+          </span>
+        </button>
+
+        <!-- CERTIFIQUE-SE DE QUE ESTE BOTÃO ESTÁ AQUI! -->
+        <button id="back-button" class="gooey-button">
+          ⬅️ VOLTAR
+          <span class="bubbles">
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+          </span>
+        </button>
+      </div>
+
+      <!-- Seção de resultado -->
+      <div class="result-section" id="result-section">
+        <h3>🎯 Resultado da Batalha</h3>
+        <div class="calculation-details" id="calculation-details"></div>
+        <div class="final-result" id="final-result"></div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

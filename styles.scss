@@ -1,0 +1,327 @@
+// Variáveis principais
+$prime: #e45323;
+$second: #0c1016;
+$accent: #ff6b35;
+$text-light: #ffffff;
+$text-dark: #333333;
+$bg-overlay: rgba(0, 0, 0, 0.7);
+$container-bg: rgba(12, 16, 22, 0.4);
+
+// Reset e configurações gerais
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  overflow-x: hidden;
+  background: url('assets/background.jpg') center center / cover no-repeat fixed;
+}
+
+// Vídeo de fundo
+#background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -2;
+}
+
+// SVG oculto para filtros
+svg {
+  position: absolute;
+  top: -4000px;
+  left: -4000px;
+}
+
+// Container principal
+.challenge-container {
+  position: fixed;
+  left: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 450px;
+  max-height: 80vh;
+  background: $container-bg;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(228, 83, 35, 0.4);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 30px rgba(228, 83, 35, 0.2);
+  overflow-y: auto;
+  z-index: 100;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      rgba(255, 255, 255, 0.02) 100%
+    );
+    border-radius: 20px;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, $prime 0%, $accent 100%);
+    border-radius: 10px;
+  }
+}
+
+// Header
+.challenge-header {
+  text-align: center;
+  margin-bottom: 30px;
+
+  h1 {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: $text-light;
+    margin-bottom: 10px;
+    text-shadow: 0 0 20px rgba(228, 83, 35, 0.8), 2px 2px 4px rgba(0, 0, 0, 0.8);
+    filter: drop-shadow(0 0 10px rgba(228, 83, 35, 0.6));
+  }
+
+  p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9rem;
+    font-weight: 300;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  }
+}
+
+// Seção de entrada
+.input-section {
+  margin-bottom: 25px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+
+  label {
+    display: block;
+    color: $text-light;
+    font-weight: 500;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  }
+
+  input {
+    width: 100%;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(228, 83, 35, 0.4);
+    border-radius: 10px;
+    color: $text-light;
+    font-size: 0.9rem;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: $prime;
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 15px rgba(228, 83, 35, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+  }
+}
+
+// Seção de botões - CORRIGIDO PARA MOSTRAR AMBOS OS BOTÕES
+.buttons-section {
+  display: flex;
+  flex-wrap: wrap; // Permite quebra de linha se necessário
+  gap: 15px;
+  margin-bottom: 25px;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px; // Garante altura mínima para os botões
+
+  // FORÇAR A EXIBIÇÃO DE AMBOS OS BOTÕES
+  button {
+    display: block !important; // Força todos os botões a aparecerem
+    visibility: visible !important;
+  }
+
+  #start-button {
+    display: block !important;
+  }
+
+  #back-button {
+    display: block !important; // FORÇA O BOTÃO VOLTAR A APARECER
+  }
+}
+
+// Botões com efeito gooey - TAMANHO CORRETO
+.gooey-button {
+  padding: 1rem;
+  font-size: 1rem; // Tamanho normal
+  border: none;
+  color: $second;
+  filter: url('#gooey');
+  position: relative;
+  background-color: $prime;
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  border-radius: 5px;
+  min-width: 120px; // Largura mínima
+  white-space: nowrap; // Evita quebra de texto
+
+  &:focus {
+    outline: none;
+  }
+
+  .bubbles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    .bubble {
+      background-color: $prime;
+      border-radius: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      z-index: -1;
+
+      @for $bubble from 1 through 10 {
+        &:nth-child(#{$bubble}) {
+          $size: 25px;
+          left: (random(90) + 10) + px;
+          width: $size;
+          height: $size;
+          animation: move-#{$bubble} #{3 + $bubble * 0.02}s infinite;
+          animation-delay: #{$bubble * 0.2}s;
+        }
+      }
+    }
+  }
+}
+
+// Keyframes para animação das bolhas
+@for $bubble from 1 through 10 {
+  @keyframes move-#{$bubble} {
+    0% {
+      transform: translate(0, 0);
+    }
+    99% {
+      transform: translate(0, -(random(80) + 50) + px);
+    }
+    100% {
+      transform: translate(0, 0);
+      opacity: 0;
+    }
+  }
+}
+
+// Seção de resultado
+.result-section {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 20px;
+  border: 1px solid rgba(228, 83, 35, 0.3);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  display: none;
+
+  h3 {
+    color: $text-light;
+    font-family: 'Orbitron', monospace;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(228, 83, 35, 0.8), 1px 1px 2px rgba(0, 0, 0, 0.8);
+  }
+}
+
+.calculation-details {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  font-family: 'Roboto', monospace;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.95);
+  white-space: pre-wrap;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.final-result {
+  background: $prime;
+  color: $second;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: 0 5px 15px rgba(228, 83, 35, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+// Responsividade
+@media (max-width: 768px) {
+  .challenge-container {
+    left: 20px;
+    right: 20px;
+    width: auto;
+    max-width: calc(100vw - 40px);
+    padding: 20px;
+  }
+
+  .buttons-section {
+    flex-direction: column;
+    gap: 10px;
+
+    .gooey-button {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .challenge-container {
+    left: 10px;
+    right: 10px;
+    max-width: calc(100vw - 20px);
+    padding: 15px;
+  }
+
+  .gooey-button {
+    font-size: 0.9rem;
+  }
+}
