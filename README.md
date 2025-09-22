@@ -28,7 +28,7 @@ Retorne apenas as **cores que permaneceram intactas**.
 ```bash
 # 1. Clone ou baixe os arquivos do projeto
 # 2. Navegue até a pasta do projeto
-cd prova-das-chamas-da-verdade
+cd desafio_301
 
 # 3. Instale as dependências
 npm install
